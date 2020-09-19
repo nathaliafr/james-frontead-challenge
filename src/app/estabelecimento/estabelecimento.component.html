@@ -1,11 +1,58 @@
-<p>estabelecimento works!</p>
+<div class="toolbar" role="banner">
+  <div class="center">
+    <img width="40" alt="logo"
+         src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div class="content">
+  <mat-card class="mat-card border" style="width: 100%; height: 100%">
+    <div class="example-button-container">
+      <button mat-icon-button  aria-label="Example icon button with a vertical three dot icon" routerLink="/estabelecimentos" >
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+      <img class="image-form" src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
+      <div class="texto">simples id</div>
+      <div class="texto">cidade | endereço </div>
+      <div class="title">Informações Básicas</div>
+      <mat-divider></mat-divider>
 
-<div>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Estabelecimentos</mat-card-title>
-    </mat-card-header>
-    simple
+      <form>
+
+        <div class="example-container" >
+          <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <mat-select >
+              <mat-option *ngFor="let estabelecimento of estabelecimentos" [(ngModel)]="estabelecimento.name" >
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>cidade</mat-label>
+            <mat-select >
+              <mat-option>-- None --</mat-option>
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Endereço">
+          </mat-form-field>
+
+      </div>
+      </form>
+
+
+    </div>
+
+    <div class="title">Informações Básicas</div>
+    <mat-divider></mat-divider>
+
+    <form>
+
+    </form>
+
   </mat-card>
-
 </div>

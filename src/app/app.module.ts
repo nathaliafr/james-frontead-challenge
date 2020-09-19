@@ -8,6 +8,13 @@ import {EstabelecimentosComponent} from './estabelecimentos/estabelecimentos.com
 import {AngularComponent } from './angular/angular.component';
 import {CardModule} from 'primeng/card';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import { AppRoutingModule } from './app-routing.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,13 +27,14 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     BrowserModule,
     CardModule,
-    RouterModule.forRoot([
-      {path: '', component: AngularComponent},
-      {path: 'estabelecimento', component: EstabelecimentoComponent},
-      {path: 'estabelecimentos', component: EstabelecimentosComponent},
-      {path: '', redirectTo: '/estabelecimento', pathMatch: 'full'},
-    ]),
     MatCardModule,
+    MatGridListModule,
+    MatIconModule,
+    MatDividerModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

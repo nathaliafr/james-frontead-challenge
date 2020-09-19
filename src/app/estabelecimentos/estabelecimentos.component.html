@@ -1,8 +1,24 @@
 <div class="toolbar" role="banner">
-  <div class="center">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src=""/>
+    <div class="center">
+      <img width="40" alt="logo"
+      src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
+    </div>
   </div>
+<div class="content">
+  <mat-card class="mat-card cardJames" style="width: 100%" *ngFor="let estabelecimento of estabelecimentos" routerLink="/estabelecimento" >
+
+    <img align="left" width="60"  src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
+    <div class="texto">
+      <div><b>{{estabelecimento.name}}</b> {{estabelecimento.id}}</div>
+    <div> cidade | {{estabelecimento.address}}</div>
 </div>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+
