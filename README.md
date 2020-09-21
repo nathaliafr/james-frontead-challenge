@@ -1,27 +1,44 @@
-# JamesFrontendChallenge
+### Frontend-challenge James Delivery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+- Desafio realizado consume a [API](https://my-json-server.typicode.com/james-delivery/frontend-challenge "API")
+- Desenvolvido com Angular 10, Angular Material e Bootstrap
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Requisitos do sistema
 
-## Code scaffolding
+ - Node: versão `10.22.0` node -v Npm: versão `6.14.6` npm -v Angula: versão `10.1.3`
+ - Acesso a internet
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Build
 
-## Build
+- Execute `npm install` na pasta do projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### Development server
 
-## Running unit tests
+- Utilize o comando `npm start` para executar o projeto. Abra a página http://localhost:4200/ no navegador para visualizar.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Hierarquia
 
-## Running end-to-end tests
+- src
+ - app
+   - Estabelecimento
+     - Estabelcimento.component.css
+	 - Estabelcimento.component.html
+	 - Estabelcimento.component.ts
+   - Estabelecimentos
+     - Estabelcimentos.component.css
+	 - Estabelcimentos.component.html
+	 - Estabelcimentos.component.ts
+   - Service
+   	- Estabelcimentos.service.spec.ts
+	- Estabelcimentos.service.ts
+- app.component.css (Estilo do formulário)
+	- app.component.html (Hipertexto responsável pela estruturação do formulário)
+	- app.component.spec.ts (Arquivo de teste)
+	- app.component.ts (Classe responsável pela logica utilizada no formulário)
+	- app.module.ts (É o arquivo de configuração e importe das bibliotecas)
+   
+#### Plataforma Gupy
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Nome: Nathalia Felix da Rocha 
+- E-mail: natih.felix@gmail.com
