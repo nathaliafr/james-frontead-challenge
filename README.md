@@ -42,3 +42,7 @@
 
 - Nome: Nathalia Felix da Rocha 
 - E-mail: natih.felix@gmail.com
+
+#### Live version
+
+- Atraves da vercel é possível visualizar a [live version](https://james-frontead-challenge.vercel.app/) 
