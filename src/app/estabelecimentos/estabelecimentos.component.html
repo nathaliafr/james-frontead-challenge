@@ -1,19 +1,23 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <div class="toolbar" role="banner">
     <div class="center">
       <img width="40" alt="logo"
       src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
     </div>
   </div>
+<body class="divBackground">
 <div class="content">
-  <mat-card class="mat-card cardJames" style="width: 100%" *ngFor="let estabelecimento of estabelecimentos" routerLink="/estabelecimento" >
+  <mat-card class="mat-card cardJames" *ngFor="let estabelecimento of estabelecimentos" (click)="editarFormulario(estabelecimento)"   >
 
-    <img align="left" width="60"  src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
-    <div class="texto">
-      <div><b>{{estabelecimento.name}}</b> {{estabelecimento.id}}</div>
-    <div> cidade | {{estabelecimento.address}}</div>
-</div>
+    <img align="left" width="50"  src="{{estabelecimento.picture}}"/>
+        <div class="texto">
+          <div><b>{{estabelecimento.name}}</b> {{estabelecimento.id}}</div>
+        <div>  {{estabelecimento.city}} | {{estabelecimento.address}}</div>
+    </div>
   </mat-card>
 </div>
+</body>
 
 
 

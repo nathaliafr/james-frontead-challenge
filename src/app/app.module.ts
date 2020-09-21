@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import {EstabelecimentoComponent} from './estabelecimento/estabelecimento.component';
 import {EstabelecimentosComponent} from './estabelecimentos/estabelecimentos.component';
-import {AngularComponent } from './angular/angular.component';
 import {CardModule} from 'primeng/card';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -15,14 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { EstabelecimentosService } from './service/estabelecimentos.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AngularComponent,
     EstabelecimentosComponent,
-    EstabelecimentoComponent
+    EstabelecimentoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,8 +35,12 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    EstabelecimentosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

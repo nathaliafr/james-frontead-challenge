@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {PrimeNGConfig} from 'primeng/api';
-import {Estabelecimento} from '../estabelecimento';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Estabelecimento } from '../estabelecimento';
+import { EstabelecimentosService } from '../service/estabelecimentos.service';
+
+interface TipoConta {
+  value: string;
+  viewValue: string;
+}
+interface SaqueAutomatico {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-estabelecimento',
@@ -8,40 +18,69 @@ import {Estabelecimento} from '../estabelecimento';
   styleUrls: ['./estabelecimento.component.css']
 })
 export class EstabelecimentoComponent implements OnInit {
-
-  estabecimento: Array<Estabelecimento>;
-
-  estabelecimentos: Array<Estabelecimento> = [
-    {
-      id: `5e34937af59dabb9a2c4c05f`,
-      index: 0,
-      guid: `7d35ec3a-1462-49cc-adec-1726f98862e1`,
-      picture: `http://placehold.it/32x32`,
-      name: `Gink`,
-      email: `contato@gink.com`,
-      phone: `+1 (859) 505-2620`,
-      address: `808 Ford Street, Westerville, Nevada, 6937`,
-      registered: `Sunday, September 18, 2016 10:04 AM`,
-      latitude: `37.849767`,
-      longitude: `-58.807759`
-    },
-    {
-      id: `5e34937ab389aaf14cd62d05`,
-      index: 1,
-      guid: `0fd467f7-5af4-4f7a-89f5-273d4032e153`,
-      picture: `http://placehold.it/32x32`,
-      name: `Geeketron`,
-      email: `contato@geeketron.com`,
-      phone: `+1 (984) 548-3600`,
-      address: `698 Hendrickson Place, Valle, Missouri, 5695`,
-      registered: `Wednesday, November 28, 2018 12:47 PM`,
-      latitude: `84.233418`,
-      longitude: `-1.928457`}
+  id: string;
+  estabelecimentos: Array<Estabelecimento> = [];
+  estabelecimento: Estabelecimento;
+  mensagem: string;
+  nome: string;
+  tipoContas: TipoConta[] = [
+    {value: 'conta-corrente', viewValue: 'Conta Corrente'},
+    {value: 'poupanca ', viewValue: 'Poupança '},
+    {value: 'conta-salario ', viewValue: 'Conta Salário '},
+  ];
+  saquesAutomatico: SaqueAutomatico[] = [
+    {value: 'sim', viewValue: 'Sim'},
+    {value: 'nao', viewValue: 'Não'}
   ];
 
-  constructor() { }
+  constructor(private estabelecimentosService: EstabelecimentosService,
+              private route: ActivatedRoute,
+              private router: Router,
+              ) {
+    this.route.queryParams.subscribe(params => {
+      this.id = params[`id`];
+
+      this.estabelecimento = estabelecimentosService.findById(this.id);
+      this.nome = this.estabelecimento.name;
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Salva uma edição de estabelecimento
+   */
+  salvar() {
+    console.log('texto');
+    if (this.validar()){
+      this.estabelecimentosService.editar(this.estabelecimento);
+      this.router.navigate(['/estabelecimentos']);
+    }
+  }
+
+  validar(): boolean{
+
+    const conta = Number.parseInt(this.estabelecimento.account, 10);
+    const agencia = Number.parseInt(this.estabelecimento.agency, 10);
+    const cpf = Number.parseInt(this.estabelecimento.document, 10);
+    if (this.estabelecimento.name == null || this.estabelecimento.name === '' ) {
+      this.mensagem = 'Nome do estabelecimento é obrigatório';
+      return false;
+    }
+    if ((this.estabelecimento.document === '' || this.estabelecimento.document === undefined) &&
+      (this.estabelecimento.account === '' || this.estabelecimento.account === undefined) &&
+      (this.estabelecimento.agency === undefined || this.estabelecimento.agency === '')){
+      return true;
+    }
+    if ((Number.isInteger(conta) === false || Number.isNaN(conta) === true )
+        && (Number.isInteger(agencia) === false || Number.isNaN(agencia) === true)
+        && (Number.isInteger(cpf) === false || Number.isNaN(cpf) === true )) {
+        this.mensagem = 'Campo aceita apenas números';
+        return false;
+    }else {
+      return true;
+    }
   }
 
 }

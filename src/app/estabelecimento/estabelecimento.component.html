@@ -1,58 +1,142 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <div class="toolbar" role="banner">
   <div class="center">
     <img width="40" alt="logo"
          src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
   </div>
 </div>
-<mat-divider></mat-divider>
+
+<body class="divBackground">
 <div class="content">
-  <mat-card class="mat-card border" style="width: 100%; height: 100%">
+  <mat-card class="mat-card cardJames">
+
     <div class="example-button-container">
-      <button mat-icon-button  aria-label="Example icon button with a vertical three dot icon" routerLink="/estabelecimentos" >
-        <mat-icon>keyboard_backspace</mat-icon>
-      </button>
-      <img class="image-form" src="https://raw.githubusercontent.com/james-delivery/frontend-challenge/5d22c168a743de955ab261d1a415320e81e4ebf1/assets/logo.svg"/>
-      <div class="texto">simples id</div>
-      <div class="texto">cidade | endereço </div>
-      <div class="title">Informações Básicas</div>
-      <mat-divider></mat-divider>
-
-      <form>
-
-        <div class="example-container" >
-          <mat-form-field appearance="fill">
-            <mat-label>Nome</mat-label>
-            <mat-select >
-              <mat-option *ngFor="let estabelecimento of estabelecimentos" [(ngModel)]="estabelecimento.name" >
-                </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>cidade</mat-label>
-            <mat-select >
-              <mat-option>-- None --</mat-option>
-              <mat-option value="option">Option</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Endereço</mat-label>
-            <input matInput placeholder="Endereço">
-          </mat-form-field>
-
+      <div class="container-fluid espac">
+        <div class="row">
+          <div class="col-md-auto">
+            <button mat-icon-button class="buttonBack" routerLink="">
+              <mat-icon>keyboard_backspace</mat-icon>
+            </button>
+          </div>
+          <div class="col-md-auto">
+            <img class="image-form" src="{{estabelecimento.picture}}"/>
+          </div>
+          <div class="col-md-auto texto">
+            <div class="nomeEst">{{nome}} </div>
+            <div>ID: {{estabelecimento.id}} </div>
+          </div>
+        </div>
       </div>
+
+      <form class="needs-validation" novalidate>
+        <div class="title">Informações Básicas</div>
+        <mat-divider></mat-divider>
+
+        <div class="example-container conteiner">
+          <div class="row">
+            <div class="col-lg-4">
+              <label class="textoFom" for="name">Nome</label>
+              <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.name"
+                     value="{{estabelecimento.name}}" name="name" id="name" required="true">
+              <div class="invalid-tooltip">
+                Please provide a valid city.
+              </div>
+              </div>
+              <div class="col-md-4">
+                <label class="textoFom" for="city">Cidade</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.city"
+                       value="{{estabelecimento.city}}" name="city" id="city">
+              </div>
+              <div class="col-lg-4">
+                <label class="textoFom" for="address">Endereço</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.address"
+                       value="{{estabelecimento.address}}" name="address" id="address">
+              </div>
+            </div>
+          </div>
+
+          <div class="title">Financeiro</div>
+          <mat-divider></mat-divider>
+
+          <div class="example-container conteiner">
+            <div class="row ">
+              <div class="col-lg-4">
+                <label class="textoFom" for="bank">Banco</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.bank"
+                       value="{{estabelecimento.bank}}" name="bank" id="bank">
+              </div>
+
+
+              <div class="col-lg-4">
+                <label class="textoFom" for="accountType">Tipo de Conta</label>
+                <select class="form-control" [(ngModel)]="estabelecimento.accountType" name="accountType"
+                        id="accountType">
+                  <option value="" selected></option>
+                  <option *ngFor="let tipoConta of tipoContas" [value]="tipoConta.value">
+                    {{tipoConta.viewValue}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-lg-4">
+                <label class="textoFom" for="document">CPF/CNPJ</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.document"
+                       value="{{estabelecimento.document}}" name="document" id="document" pattern="[0-9]*" >
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3">
+                <label class="textoFom" for="agency">Agência</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.agency"
+                       value="{{estabelecimento.agency}}" name="agency" id="agency" pattern="[0-9]*">
+              </div>
+              <div class="col-md-1">
+                <label for="agencyDigit"></label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [maxlength]="1"
+                       [(ngModel)]="estabelecimento.agencyDigit" value="{{estabelecimento.agencyDigit}}"
+                       name="agencyDigit" id="agencyDigit">
+              </div>
+              <div class="col-lg-3">
+                <label class="textoFom" for="account">Conta</label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [(ngModel)]="estabelecimento.account"
+                       value="{{estabelecimento.account}}" name="account" id="account" pattern="[0-9]*" title="jcndjk">
+
+              </div>
+              <div class="col-md-1">
+                <label for="accountDigit"></label>
+                <input type="text" class="form-control mx-sm-1 mb-2" [maxlength]="1"
+                       [(ngModel)]="estabelecimento.accountDigit" value="{{estabelecimento.accountDigit}}"
+                       name="accountDigit" id="accountDigit">
+              </div>
+              <div class="col-lg-4">
+                <label class="textoFom" for="automaticWithdrawal">Saque automático</label>
+                <select class="form-control" [(ngModel)]="estabelecimento.automaticWithdrawal"
+                        name="automaticWithdrawal"
+                        id="automaticWithdrawal">
+                  <option value="" selected></option>
+                  <option *ngFor="let saqueAutomatico of saquesAutomatico" [value]="saqueAutomatico.value">
+                    {{saqueAutomatico.viewValue}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+        <div class="example-button-row col-auto my-3"  align="right">
+          <div class="alert alert-danger" role="alert" *ngIf="mensagem">
+            {{mensagem}}
+          </div>
+          <input class="btn bg-success text-white rounded-pill" type="submit" (click)="salvar()" value="Salvar" />
+        </div>
+
       </form>
-
-
     </div>
 
-    <div class="title">Informações Básicas</div>
-    <mat-divider></mat-divider>
-
-    <form>
-
-    </form>
 
   </mat-card>
+
 </div>
+</body>

@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AngularComponent} from './angular/angular.component';
 import {EstabelecimentoComponent} from './estabelecimento/estabelecimento.component';
 import {EstabelecimentosComponent} from './estabelecimentos/estabelecimentos.component';
 
-const appRoutes: Routes =[
-  {path: '', component: AngularComponent},
-  {path: 'estabelecimento', component: EstabelecimentoComponent},
+const appRoutes: Routes = [
   {path: 'estabelecimentos', component: EstabelecimentosComponent},
-  {path: '', redirectTo: '/estabelecimento', pathMatch: 'full'},
+  {path: 'estabelecimento', component: EstabelecimentoComponent},
+  {path: '', redirectTo: '/estabelecimentos', pathMatch: 'full'},
 ]
 
 @NgModule({

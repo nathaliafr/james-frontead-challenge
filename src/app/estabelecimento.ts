@@ -14,6 +14,15 @@ export class Estabelecimento {
   public registered?: string,
   public latitude?: string,
   public longitude?: string,
+  public city?: string,
+  public bank?: string,
+  public accountType?: string,
+  public document?: string,
+  public agency?: string,
+  public agencyDigit?: string,
+  public account?: string,
+  public accountDigit?: string,
+  public automaticWithdrawal?: string
   ) { }
 
 }
